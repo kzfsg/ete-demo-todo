@@ -1,0 +1,125 @@
+{
+  "name": "a user can add a task and complete it",
+  "file": "e2e/tasks/a-user-can-add-a-task-and-complete-it.yaml",
+  "flow": "Tasks",
+  "mode": "replay",
+  "status": "passed",
+  "durationMs": 1039,
+  "anomalyCount": 2,
+  "steps": [
+    {
+      "index": 1,
+      "text": "go to /",
+      "kind": "action",
+      "status": "passed",
+      "durationMs": 63,
+      "anomalies": [
+        {
+          "t": 106,
+          "kind": "http-error",
+          "message": "HTTP 500 GET http://localhost:4321/api/metrics"
+        },
+        {
+          "t": 106,
+          "kind": "console-error",
+          "message": "Failed to load resource: the server responded with a status of 500 (Internal Server Error)"
+        }
+      ],
+      "entry": {
+        "kind": "navigate",
+        "url": "/"
+      },
+      "startMs": 50,
+      "endMs": 115,
+      "screenshot": "steps/01.png"
+    },
+    {
+      "index": 2,
+      "text": "type \"Walk the dog\" into \"New task\"",
+      "kind": "action",
+      "status": "passed",
+      "durationMs": 40,
+      "anomalies": [],
+      "entry": {
+        "kind": "type",
+        "target": {
+          "selector": "label=New task"
+        },
+        "text": "Walk the dog"
+      },
+      "startMs": 195,
+      "endMs": 236,
+      "screenshot": "steps/02.png"
+    },
+    {
+      "index": 3,
+      "text": "press Enter",
+      "kind": "action",
+      "status": "passed",
+      "durationMs": 14,
+      "anomalies": [],
+      "entry": {
+        "kind": "press",
+        "key": "Enter"
+      },
+      "startMs": 284,
+      "endMs": 299,
+      "screenshot": "steps/03.png"
+    },
+    {
+      "index": 4,
+      "text": "the page shows \"Walk the dog\"",
+      "kind": "expect",
+      "status": "passed",
+      "durationMs": 11,
+      "anomalies": [],
+      "entry": {
+        "kind": "textVisible",
+        "text": "Walk the dog"
+      },
+      "startMs": 338,
+      "endMs": 350,
+      "screenshot": "steps/04.png"
+    },
+    {
+      "index": 5,
+      "text": "click \"Complete Walk the dog\"",
+      "kind": "action",
+      "status": "passed",
+      "durationMs": 33,
+      "anomalies": [],
+      "entry": {
+        "kind": "click",
+        "target": {
+          "selector": "role=checkbox[name=\"Complete Walk the dog\"]"
+        }
+      },
+      "startMs": 401,
+      "endMs": 435,
+      "screenshot": "steps/05.png"
+    },
+    {
+      "index": 6,
+      "text": "the task \"Walk the dog\" is ticked",
+      "kind": "expect",
+      "status": "passed",
+      "durationMs": 19,
+      "anomalies": [],
+      "entry": {
+        "kind": "elementVisible",
+        "target": {
+          "selector": "role=checkbox[name=\"Complete Walk the dog\"][checked]"
+        }
+      },
+      "startMs": 470,
+      "endMs": 489,
+      "screenshot": "steps/06.png"
+    }
+  ],
+  "recording": {
+    "tracePath": "trace.zip",
+    "videoPath": "video.webm",
+    "filmstripPath": "filmstrip.png",
+    "previewPath": "preview.png"
+  }
+}
