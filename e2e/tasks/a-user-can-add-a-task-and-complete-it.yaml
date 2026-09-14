@@ -1,0 +1,9 @@
+name: a user can add a task and complete it
+flow: Tasks
+steps:
+  - go to /
+  - type "Walk the dog" into "New task"
+  - press Enter
+  - expect: the page shows "Walk the dog"
+  - click "Complete Walk the dog"
+  - expect: the task "Walk the dog" is ticked

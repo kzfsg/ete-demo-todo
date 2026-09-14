@@ -1,0 +1,4 @@
+# ete configuration — https://github.com/kzfsg/ete
+url: http://localhost:4321
+start: node server.mjs
+readyTimeout: 60000          # ms to wait for `url` after `start`

@@ -1,0 +1,36 @@
+{
+  "version": 1,
+  "steps": {
+    "b986a898fcb2a142e9abe68222d861d3db47129ea542e52b3d0e9bbc01b6c39a": {
+      "kind": "navigate",
+      "url": "/"
+    },
+    "86cf21678dee06d8053b20184342dd29af088b554f23b501d5f582a6caced5ec": {
+      "kind": "type",
+      "target": {
+        "selector": "label=New task"
+      },
+      "text": "Walk the dog"
+    },
+    "089828e2d93e3ec163ef8ed26b52e510c4eabe756bb03d208ffe2d7d5485ae8a": {
+      "kind": "press",
+      "key": "Enter"
+    },
+    "2fb81ffe9086b50b74127705325b2b725376a99957af3746a1ff8c155e683c46": {
+      "kind": "textVisible",
+      "text": "Walk the dog"
+    },
+    "c2872f0d324e112e17e03edaf48a1a36ef231fc21dfbcc0aff5f98d8652ee315": {
+      "kind": "click",
+      "target": {
+        "selector": "role=checkbox[name=\"Complete Walk the dog\"]"
+      }
+    },
+    "b2ef90d95557ea2cef3d34241d5973cb6d687d2ee63cda0ad67b9e6e0a895580": {
+      "kind": "elementVisible",
+      "target": {
+        "selector": "role=checkbox[name=\"Complete Walk the dog\"][checked]"
+      }
+    }
+  }
+}
