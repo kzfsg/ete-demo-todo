@@ -1,0 +1,113 @@
+<!doctype html>
+<html lang="en"><head><meta charset="utf-8"><title>ete results</title><style>
+:root{font-family:ui-sans-serif,system-ui,sans-serif;color:#1a1a1a;background:#fafafa}
+body{margin:0;padding:24px;max-width:1100px;margin-inline:auto}
+h1{font-size:20px;margin:0 0 16px}
+h2{font-size:16px;margin:0 0 12px;display:flex;gap:8px;align-items:center;flex-wrap:wrap}
+h2 small{color:#666;font-weight:normal;font-size:12px}
+.flow{font-size:11px;background:#eef2ff;color:#3730a3;border-radius:999px;padding:2px 8px;font-weight:500}
+.warn{color:#92400e}
+section.test{background:#fff;border:1px solid #e5e5e5;border-radius:8px;padding:16px;margin-bottom:24px}
+video{width:100%;max-height:420px;background:#000;border-radius:6px;display:block}
+.rail{position:relative;height:22px;margin:6px 0 12px;background:#f0f0f0;border-radius:4px}
+.playhead{position:absolute;top:0;bottom:0;width:2px;background:#111;left:0;pointer-events:none}
+.marker{position:absolute;top:3px;width:10px;height:16px;margin-left:-5px;border:0;border-radius:2px;cursor:pointer;padding:0;background:#9ca3af}
+.marker.status-passed{background:#22c55e}
+.marker.status-failed{background:#ef4444}.marker.status-skipped{background:#d1d5db}
+.marker.anomaly{background:#facc15;top:8px;width:8px;height:8px;margin-left:-4px;border-radius:50%}
+.marker:hover{outline:2px solid #111}
+.filmstrip{width:100%;border:1px solid #eee;border-radius:4px;margin-bottom:8px}
+table{width:100%;border-collapse:collapse;font-size:14px}
+th{text-align:left;color:#666;font-weight:500;font-size:12px;padding:6px}
+td{padding:6px;border-top:1px solid #eee;vertical-align:top}
+tr.step[data-start]{cursor:pointer}
+tr.step.current{background:#fffbeb}
+td.shot img{width:160px;border:1px solid #ddd;border-radius:4px}
+td.idx,td.dur{color:#666;white-space:nowrap}
+.kind{font-size:11px;color:#555;background:#eee;border-radius:3px;padding:1px 4px}
+.badge{font-size:11px;border-radius:999px;padding:2px 8px;background:#e5e5e5;text-transform:uppercase;letter-spacing:.03em}
+.status-passed>.status .badge,.status-passed>h2 .badge{background:#d4f4dd;color:#146c2e}
+.status-failed>.status .badge,.status-failed>h2 .badge{background:#fee2e2;color:#991b1b}
+.status-skipped>.status .badge{background:#f3f4f6;color:#6b7280}
+.error{margin-top:6px;font-family:ui-monospace,monospace;font-size:12px;color:#991b1b;white-space:pre-wrap}
+.anomalies{margin:6px 0 0;padding-left:16px;font-size:12px;color:#92400e}
+.akind{font-family:ui-monospace,monospace;background:#fef3c7;border-radius:3px;padding:0 4px}
+.at{color:#999}
+.muted{color:#666;font-size:12px}
+</style></head>
+<body>
+<h1>ete results · 1/1 passed · <span class="warn">2 anomalies</span></h1>
+<section class="test status-passed" id="a-user-can-add-a-task-and-complete-it">
+<h2><span class="badge">passed</span> a user can add a task and complete it <span class="flow">Tasks</span> <small>e2e/tasks/a-user-can-add-a-task-and-complete-it.yaml · replay · 1355 ms · <span class="warn">2 anomalies</span></small></h2>
+<video controls preload="metadata" src="a-user-can-add-a-task-and-complete-it/video.webm"></video>
+<div class="rail" data-total="1355"><div class="playhead"></div><button class="marker step status-passed" style="left:6.2%" data-t="84" title="1. go to /"></button><button class="marker anomaly" style="left:13.06%" data-t="177" title="http-error: HTTP 500 GET http://localhost:4321/api/metrics"></button><button class="marker anomaly" style="left:13.14%" data-t="178" title="console-error: Failed to load resource: the server responded with a status of 500 (Internal Server Error)"></button><button class="marker step status-passed" style="left:22.88%" data-t="310" title="2. type &quot;Walk the dog&quot; into &quot;New task&quot;"></button><button class="marker step status-passed" style="left:32.84%" data-t="445" title="3. press Enter"></button><button class="marker step status-passed" style="left:40.22%" data-t="545" title="4. expect: the page shows &quot;Walk the dog&quot;"></button><button class="marker step status-passed" style="left:46.49%" data-t="630" title="5. click &quot;Complete Walk the dog&quot;"></button><button class="marker step status-passed" style="left:54.02%" data-t="732" title="6. expect: the task &quot;Walk the dog&quot; is ticked"></button></div>
+<img class="filmstrip" src="a-user-can-add-a-task-and-complete-it/filmstrip.png" alt="filmstrip">
+<p class="muted">Trace: <code>npx playwright show-trace a-user-can-add-a-task-and-complete-it/trace.zip</code></p>
+<table>
+<thead><tr><th></th><th>#</th><th>Step</th><th>Status</th><th>Time</th></tr></thead>
+<tbody>
+<tr class="step status-passed" data-start="84">
+  <td class="shot"><img src="a-user-can-add-a-task-and-complete-it/steps/01.png" alt="step 1" loading="lazy"></td>
+  <td class="idx">1</td>
+  <td class="text">go to /<ul class="anomalies"><li><span class="akind">http-error</span> HTTP 500 GET http://localhost:4321/api/metrics <span class="at">@0.2s</span></li><li><span class="akind">console-error</span> Failed to load resource: the server responded with a status of 500 (Internal Server Error) <span class="at">@0.2s</span></li></ul></td>
+  <td class="status"><span class="badge">passed</span></td>
+  <td class="dur">100 ms</td>
+</tr>
+<tr class="step status-passed" data-start="310">
+  <td class="shot"><img src="a-user-can-add-a-task-and-complete-it/steps/02.png" alt="step 2" loading="lazy"></td>
+  <td class="idx">2</td>
+  <td class="text">type &quot;Walk the dog&quot; into &quot;New task&quot;</td>
+  <td class="status"><span class="badge">passed</span></td>
+  <td class="dur">60 ms</td>
+</tr>
+<tr class="step status-passed" data-start="445">
+  <td class="shot"><img src="a-user-can-add-a-task-and-complete-it/steps/03.png" alt="step 3" loading="lazy"></td>
+  <td class="idx">3</td>
+  <td class="text">press Enter</td>
+  <td class="status"><span class="badge">passed</span></td>
+  <td class="dur">25 ms</td>
+</tr>
+<tr class="step status-passed" data-start="545">
+  <td class="shot"><img src="a-user-can-add-a-task-and-complete-it/steps/04.png" alt="step 4" loading="lazy"></td>
+  <td class="idx">4</td>
+  <td class="text"><span class="kind">expect</span> the page shows &quot;Walk the dog&quot;</td>
+  <td class="status"><span class="badge">passed</span></td>
+  <td class="dur">18 ms</td>
+</tr>
+<tr class="step status-passed" data-start="630">
+  <td class="shot"><img src="a-user-can-add-a-task-and-complete-it/steps/05.png" alt="step 5" loading="lazy"></td>
+  <td class="idx">5</td>
+  <td class="text">click &quot;Complete Walk the dog&quot;</td>
+  <td class="status"><span class="badge">passed</span></td>
+  <td class="dur">41 ms</td>
+</tr>
+<tr class="step status-passed" data-start="732">
+  <td class="shot"><img src="a-user-can-add-a-task-and-complete-it/steps/06.png" alt="step 6" loading="lazy"></td>
+  <td class="idx">6</td>
+  <td class="text"><span class="kind">expect</span> the task &quot;Walk the dog&quot; is ticked</td>
+  <td class="status"><span class="badge">passed</span></td>
+  <td class="dur">13 ms</td>
+</tr>
+</tbody>
+</table>
+</section>
+<script>
+document.querySelectorAll('section.test').forEach(function (sec) {
+  var video = sec.querySelector('video'); if (!video) return;
+  var rail = sec.querySelector('.rail'); var playhead = sec.querySelector('.playhead');
+  var total = Number(rail && rail.dataset.total) || 0;
+  var rows = Array.prototype.slice.call(sec.querySelectorAll('tr.step[data-start]'));
+  function seek(ms) { video.currentTime = ms / 1000; video.pause(); }
+  sec.querySelectorAll('.marker').forEach(function (m) { m.addEventListener('click', function () { seek(Number(m.dataset.t)); }); });
+  rows.forEach(function (r) { r.addEventListener('click', function (e) { if (e.target.tagName !== 'IMG') seek(Number(r.dataset.start)); }); });
+  video.addEventListener('loadedmetadata', function () { if (video.duration && isFinite(video.duration)) total = Math.max(total, video.duration * 1000); });
+  video.addEventListener('timeupdate', function () {
+    var ms = video.currentTime * 1000;
+    if (playhead && total) playhead.style.left = Math.min(100, ms / total * 100) + '%';
+    var current = null;
+    rows.forEach(function (r) { if (Number(r.dataset.start) <= ms) current = r; });
+    rows.forEach(function (r) { r.classList.toggle('current', r === current); });
+  });
+});
+</script>
+</body></html>
