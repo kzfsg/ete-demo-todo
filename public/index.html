@@ -1,0 +1,42 @@
+<!doctype html><html lang="en"><head><meta charset="utf-8"><title>Tasks</title>
+<style>
+body{font-family:system-ui;max-width:520px;margin:40px auto;padding:0 16px;color:#222}
+h1{font-size:22px}form{display:flex;gap:8px}input{flex:1;padding:8px;font-size:15px}
+button{padding:8px 12px;font-size:14px;cursor:pointer}ul{list-style:none;padding:0}
+li{display:flex;align-items:center;gap:10px;padding:10px;border-bottom:1px solid #eee}
+li.done span{text-decoration:line-through;color:#999}.filters{margin:12px 0;display:flex;gap:6px}
+.filters button[aria-pressed=true]{background:#222;color:#fff}.error{color:#b00020}.empty{color:#888}
+</style></head><body>
+<h1>Tasks</h1>
+<form id="add"><input name="title" placeholder="What needs doing?" aria-label="New task"><button type="submit">Add task</button></form>
+<p class="error" role="alert" id="err" hidden></p>
+<div class="filters" role="group" aria-label="Filter">
+  <button data-f="all" aria-pressed="true">All</button><button data-f="active" aria-pressed="false">Active</button><button data-f="done" aria-pressed="false">Completed</button>
+</div>
+<p id="count"></p>
+<ul id="list"></ul>
+<script>
+let filter='all';
+const $=s=>document.querySelector(s);
+async function load(){const t=await (await fetch('/api/todos')).json();render(t)}
+function render(t){
+  const shown=t.filter(x=>filter==='all'||(filter==='done'?x.done:!x.done));
+  const left=t.filter(x=>!x.done).length;
+  $('#count').textContent=t.length?`${left} task${left===1?'':'s'} left`:'';
+  $('#list').innerHTML=shown.length?shown.map(x=>`<li class="${x.done?'done':''}" data-id="${x.id}">
+    <input type="checkbox" aria-label="Complete ${x.title}" ${x.done?'checked':''}>
+    <span>${x.title}</span>
+    <button class="del" aria-label="Delete ${x.title}">Delete</button></li>`).join(''):'<li class="empty">Nothing here</li>';
+}
+$('#add').onsubmit=async e=>{e.preventDefault();const title=e.target.title.value;
+  const r=await fetch('/api/todos',{method:'POST',headers:{'content-type':'application/json'},body:JSON.stringify({title})});
+  if(!r.ok){const {error}=await r.json();$('#err').textContent=error;$('#err').hidden=false;return}
+  $('#err').hidden=true;e.target.reset();load()};
+$('#list').onclick=async e=>{const li=e.target.closest('li[data-id]');if(!li)return;
+  if(e.target.type==='checkbox')await fetch('/api/todos/'+li.dataset.id,{method:'PATCH'});
+  if(e.target.classList.contains('del'))await fetch('/api/todos/'+li.dataset.id,{method:'DELETE'});load()};
+$('.filters').onclick=e=>{if(!e.target.dataset.f)return;filter=e.target.dataset.f;
+  document.querySelectorAll('.filters button').forEach(b=>b.setAttribute('aria-pressed',b===e.target));load()};
+fetch('/api/metrics').catch(()=>{});  // deliberate bug for the demo: this endpoint 404s -> 500 below
+load();
+</script></body></html>
